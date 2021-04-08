@@ -2,19 +2,24 @@ package main
 
 import "fmt"
 
-func main() {
-	test := make(map[string]interface{})
-
-	test["a"] = true
-
-	b, ok := test["a"].(bool)
-	if !ok {
-		fmt.Println("ok:", ok)
-		fmt.Println("b:", b)
-	}
-	testFunc(b)
+type Test struct {
+	Key string
 }
 
-func testFunc(a bool) {
-	fmt.Println(a)
+type Tag struct {
+	Key   string
+	Value string
+	test  Test
+}
+
+func main() {
+	tag := Tag{
+		Key:   "key1",
+		Value: "value1",
+		test: Test{
+			Key: "key2",
+		},
+	}
+
+	fmt.Print(tag.test.Key)
 }

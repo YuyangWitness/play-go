@@ -52,7 +52,6 @@ func PostParam() {
 	router.POST("/post", func(c *gin.Context) {
 		name := c.PostForm("name")
 		age := c.DefaultPostForm("age", "18")
-
 		c.JSON(200, gin.H{
 			"name": name,
 			"age":  age,
